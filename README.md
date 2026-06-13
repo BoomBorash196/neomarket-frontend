@@ -1,73 +1,192 @@
-# React + TypeScript + Vite
+# NeoMarket Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современный интернет-магазин электроники и бытовой техники, построенный на React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## 🚀 Технологии
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** — библиотека для создания пользовательских интерфейсов
+- **TypeScript** — статическая типизация
+- **Vite** — быстрый инструмент сборки
+- **React Bootstrap 5** — компоненты UI
+- **React Router DOM** — навигация между страницами
+- **Axios** — HTTP-клиент для API запросов
+- **FontAwesome** — иконки
 
-## React Compiler
+## 📋 Функциональность
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Основные возможности
+- 🏠 Главная страница с баннерами и популярными товарами
+- 📦 Каталог товаров с фильтрацией и поиском
+- 🛒 Корзина покупок
+- ❤️ Избранное (wishlist)
+- 📝 Оформление заказа
+- 📋 История заказов
+- 🔍 Поиск товаров по названию
+- 🏷️ Фильтрация по категориям и характеристикам
 
-## Expanding the ESLint configuration
+### Страницы
+| Страница | Путь | Описание |
+|----------|------|----------|
+| Главная | `/` | Приветствие, баннеры, популярные товары и категории |
+| Каталог | `/catalog` | Полный список товаров с фильтрами |
+| Товар | `/product/:productId` | Детальная информация о товаре |
+| Корзина | `/cart` | Управление товарами в корзине |
+| Оформление | `/checkout` | Форма оформления заказа |
+| Избранное | `/wishlist` | Список понравившихся товаров |
+| Заказы | `/orders` | История всех заказов |
+| О нас | `/about` | Информация о проекте |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Установка и запуск
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Предварительные требования
+- Node.js 18+ 
+- npm или yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Установка зависимостей
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Запуск в режиме разработки
+```bash
+npm run dev
 ```
+
+Приложение будет доступно по адресу: http://localhost:5173
+
+### Сборка для продакшена
+```bash
+npm run build
+```
+
+### Предпросмотр продакшен-сборки
+```bash
+npm run preview
+```
+
+### Линтинг
+```bash
+npm run lint
+```
+
+## 📁 Структура проекта
+
+```
+neomarket-frontend/
+├── public/              # Статические файлы
+├── src/
+│   ├── assets/          # Изображения и ресурсы
+│   ├── components/      # Переиспользуемые компоненты
+│   │   ├── Header.tsx   # Шапка сайта
+│   │   ├── HeroSection.tsx  # Главный баннер
+│   │   ├── ProductCard.tsx  # Карточка товара
+│   │   └── SearchBar.tsx    # Поиск
+│   ├── context/         # React Context
+│   │   └── CartContext.tsx  # Управление корзиной
+│   ├── pages/           # Страницы приложения
+│   │   ├── HomePage.tsx
+│   │   ├── CatalogPage.tsx
+│   │   ├── ProductPage.tsx
+│   │   ├── CartPage.tsx
+│   │   ├── CheckoutPage.tsx
+│   │   ├── WishlistPage.tsx
+│   │   ├── OrdersPage.tsx
+│   │   └── AboutPage.tsx
+│   ├── services/        # Работа с API
+│   │   ├── api.ts       # Основной API клиент
+│   │   └── mockData.ts  # Моковые данные для разработки
+│   ├── types/           # TypeScript типы
+│   │   └── index.ts
+│   ├── App.tsx          # Главный компонент
+│   ├── main.tsx         # Точка входа
+│   ├── App.css          # Стили приложения
+│   └── index.css        # Глобальные стили
+├── index.html           # HTML шаблон
+├── vite.config.ts       # Конфигурация Vite
+├── tsconfig.json        # Конфигурация TypeScript
+└── package.json         # Зависимости проекта
+```
+
+## 🔧 Настройка API
+
+По умолчанию приложение использует моковые данные для разработки. Чтобы подключить реальный бэкенд:
+
+1. Откройте `src/services/api.ts`
+2. Измените `USE_MOCK_DATA` на `false`
+3. Укажите правильный `API_BASE_URL`
+
+```typescript
+const API_BASE_URL = 'http://localhost:8000/api/v1';
+const USE_MOCK_DATA = false;
+```
+
+## 📝 Типы данных
+
+### Product (Товар)
+```typescript
+interface Product {
+  product_id: string;
+  title: string;
+  description: string;
+  main_image_url: string;
+  images: string[];
+  min_price: number;
+  is_available: boolean;
+  characteristics: Record<string, string>;
+  skus: SKU[];
+}
+```
+
+### Cart (Корзина)
+```typescript
+interface Cart {
+  user_id: string;
+  items: CartItem[];
+  total_items: number;
+  total_amount: number;
+}
+```
+
+## 🎨 Дизайн
+
+Приложение использует Bootstrap 5 с Material Design принципами:
+- Адаптивный дизайн для всех устройств
+- Тёмная шапка навигации
+- Карточки товаров с изображениями
+- Бейджи для количества товаров в корзине
+- Индикация загрузки и состояния
+
+## 🔮 Что можно улучшить
+
+### Функциональность
+- [ ] **Авторизация пользователей** — вход/регистрация
+- [ ] **Личный кабинет** — профиль пользователя
+- [ ] **Сравнение товаров** — функция сравнения характеристик
+- [ ] **Отзывы и рейтинги** — система оценок товаров
+- [ ] **Уведомления** — о статусе заказа, скидках
+- [ ] **Многоязычность** — поддержка нескольких языков
+- [ ] **Тёмная тема** — переключение темы оформления
+- [ ] **Избранные фильтры** — сохранение настроек фильтрации
+
+### Технические улучшения
+- [ ] **PWA** — прогрессивное веб-приложение (офлайн режим)
+- [ ] **SSR** — серверный рендеринг для SEO
+- [ ] **Оптимизация изображений** — lazy loading, WebP
+- [ ] **Кэширование** — React Query / SWR
+- [ ] **Тесты** — unit и integration тесты (Jest, React Testing Library)
+- [ ] **E2E тесты** — Cypress / Playwright
+- [ ] **Аналитика** — Google Analytics / Яндекс.Метрика
+
+### Интеграции
+- [ ] **Платёжные системы** — ЮKassa, Stripe, PayPal
+- [ ] **Доставка** — интеграция со службами доставки
+- [ ] **CRM система** — синхронизация с бизнес-системами
+- [ ] **Email рассылки** — уведомления о заказах
+
+## 📄 Лицензия
+
+© 2026 NeoMarket. Все права защищены.
+
+## 🤝 Вклад
+
+Приветствуются предложения и исправления! Создавайте issue или pull request.
